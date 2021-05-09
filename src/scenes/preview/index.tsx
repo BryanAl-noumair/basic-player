@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { PreviewSong } from 'common/components/presentational/preview-song';
 
-export const Preview: React.FC = () => (
-    <div>
-        Preview
-    </div>
-)
+const Preview: React.FC = () => <PreviewSong />;
+
+export default Preview;

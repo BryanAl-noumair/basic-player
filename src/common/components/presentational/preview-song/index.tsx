@@ -1,7 +1,3 @@
-import React from 'react'
+import React from 'react';
 
-export const PreviewSong: React.FC = () => (
-    <div>
-        preview
-    </div>
-);
+export const PreviewSong: React.FC = () => <div />;

@@ -1,0 +1,5 @@
+.idea/*
+public/*
+node_modules/*
+src/reportWebVitals.ts
+src/react-app.env.d.ts
