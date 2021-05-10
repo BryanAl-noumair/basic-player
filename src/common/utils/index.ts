@@ -1,8 +1,9 @@
 import { listData, songData } from 'common/interfaces';
 import { QUERY_ITUNES } from 'common/constants/text';
+import { previewSongProps } from 'common/components/presentational/preview-song';
 
 // Get song and parse it to fit a more standard format
-export const fetchSong = async (value: string): Promise<listData | undefined> => {
+export const fetchSong = async (value: string | undefined): Promise<listData | undefined> => {
   if (!value) return undefined;
 
   const response = await fetch(QUERY_ITUNES + value, {
@@ -47,4 +48,25 @@ export const millisToMinutesAndSeconds = (millis: number): string => {
   const minutes = Math.floor(millis / 60000);
   const seconds = ((millis % 60000) / 1000).toFixed(0);
   return minutes + ':' + ((seconds as any) < 10 ? '0' : '') + seconds;
+};
+
+//Get current song data
+export const currentSongData = (
+  index: number,
+  list: Array<songData>,
+  totalElements: number,
+  searchValue: string
+): previewSongProps | null => {
+  const data = list[index];
+
+  if (!data) {
+    return null;
+  }
+
+  return {
+    data,
+    nextSongPath: `/${searchValue}/${index}`,
+    hasPrev: index === 0,
+    hasNext: index === totalElements
+  };
 };

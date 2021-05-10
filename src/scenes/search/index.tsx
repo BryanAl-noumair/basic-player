@@ -10,6 +10,7 @@ interface params {
 
 const Search: FC = (): ReactElement => {
   const { searchValue } = useParams<params>();
+
   return <SearchAndResult paramValue={searchValue || ''} fetchFn={fetchSong} />;
 };
 

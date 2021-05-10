@@ -6,7 +6,7 @@ const spin = keyframes`
   100% { transform:rotate(360deg); }
 `;
 
-export const Loading = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;

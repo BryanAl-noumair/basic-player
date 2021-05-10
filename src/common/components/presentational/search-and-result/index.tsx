@@ -4,10 +4,9 @@ import { useQuery } from 'react-query';
 import { updateLocationWhitQuerySearch } from 'common/utils';
 import { listData } from 'common/interfaces';
 import { CACHE_KEY } from 'common/constants/text';
-import { ReactComponent as LoadingIcon } from 'common/icons/loading.svg';
 import SearchBar from 'common/components/ui/search-bar';
 import SearchList from 'common/components/ui/search-list';
-import { Loading } from './styles';
+import { Loading } from 'common/components/ui/loading';
 
 interface searchAndResultProps {
   paramValue: string;
@@ -32,13 +31,7 @@ export const SearchAndResult: FC<searchAndResultProps> = ({
   return (
     <>
       <SearchBar initialValue={paramValue} onChangeCb={onChangeCb} />
-      {isLoading ? (
-        <Loading>
-          <LoadingIcon />
-        </Loading>
-      ) : (
-        <SearchList list={data} sortTypes={sortTypes} />
-      )}
+      {isLoading ? <Loading /> : <SearchList list={data} sortTypes={sortTypes} />}
     </>
   );
 };
