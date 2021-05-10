@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 
 import { Button } from './styles';
 
-interface filterButtonsProps {
-  filterValues: Array<string>;
-  filterCB: (nextFilter: string) => void;
+interface sortButtonsProps {
+  sortTypes: Array<string>;
+  sortCb: (nextFilter: string) => void;
 }
 
-const FilterButtons: React.FC<filterButtonsProps> = ({ filterValues, filterCB }) => {
+const SortButtons: FC<sortButtonsProps> = ({ sortTypes, sortCb }): ReactElement => {
   const [currentFilter, setCurrentFilter] = useState('');
   const handleFilter = (filter: string) => {
     const nextFilter = filter === currentFilter ? '' : filter;
     setCurrentFilter(nextFilter);
-    filterCB(nextFilter);
+    sortCb(nextFilter);
   };
 
   return (
-    <>
-      {filterValues.map((element) => (
+    <div>
+      {sortTypes.map((element) => (
         <Button
           key={element}
           isActive={element === currentFilter}
@@ -26,8 +26,8 @@ const FilterButtons: React.FC<filterButtonsProps> = ({ filterValues, filterCB })
           {element}
         </Button>
       ))}
-    </>
+    </div>
   );
 };
 
-export default FilterButtons;
+export default SortButtons;

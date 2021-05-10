@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 
 import { useDebounce } from 'common/hooks/useDebounce';
+import { INPUT_PLACEHOLDER } from 'common/constants/text';
 import { Input } from './styles';
 
 interface searchBarProps {
@@ -8,7 +9,7 @@ interface searchBarProps {
   onChangeCb: (term: string) => void;
 }
 
-const SearchBar: React.FC<searchBarProps> = ({ initialValue, onChangeCb }) => {
+const SearchBar: FC<searchBarProps> = ({ initialValue, onChangeCb }): ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>(initialValue);
   const handleOnChange = (event: React.FormEvent<HTMLInputElement>) =>
     setSearchTerm(event.currentTarget.value);
@@ -18,7 +19,7 @@ const SearchBar: React.FC<searchBarProps> = ({ initialValue, onChangeCb }) => {
     onChangeCb(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
 
-  return <Input value={searchTerm} onChange={handleOnChange} placeholder={'Search a song...'} />;
+  return <Input value={searchTerm} onChange={handleOnChange} placeholder={INPUT_PLACEHOLDER} />;
 };
 
 SearchBar.defaultProps = {

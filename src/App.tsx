@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { Container } from './App.styles';
 import Search from './scenes/search';
 import Preview from './scenes/preview';
 
-function App() {
-  return (
+const queryClient = new QueryClient();
+
+const App: FC = (): ReactElement => (
+  <QueryClientProvider client={queryClient}>
     <Container>
       <Router>
         <Switch>
@@ -22,7 +25,7 @@ function App() {
         </Switch>
       </Router>
     </Container>
-  );
-}
+  </QueryClientProvider>
+);
 
 export default App;

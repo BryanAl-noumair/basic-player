@@ -1,3 +1,3 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 
-export const PreviewSong: React.FC = () => <div />;
+export const PreviewSong: FC = (): ReactElement => <div />;

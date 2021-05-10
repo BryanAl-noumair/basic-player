@@ -16,6 +16,7 @@ export const Button = styled.button<buttonProps>`
   border: 2px solid ${TEXT_COLOR};
   cursor: pointer;
   font-size: 20px;
+  text-transform: capitalize;
   color: ${TEXT_COLOR};
   &:not(:first-of-type) {
     border-left: none;

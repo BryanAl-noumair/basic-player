@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import { PreviewSong } from 'common/components/presentational/preview-song';
 
-const Preview: React.FC = () => <PreviewSong />;
+const Preview: FC = (): ReactElement => <PreviewSong />;
 
 export default Preview;

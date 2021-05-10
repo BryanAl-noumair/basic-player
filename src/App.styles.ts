@@ -11,4 +11,5 @@ export const Container = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
   padding: 30px;
   box-sizing: border-box;
+  margin: 50px 0;
 `;
