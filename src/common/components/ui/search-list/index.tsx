@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 
 import { NOT_FOUND_SEARCH_MESSAGE, START_SEARCH_MESSAGE } from 'common/constants/text';
 import { listData, songData } from 'common/interfaces';
@@ -9,10 +9,15 @@ import { ListElement } from './component/list-element';
 interface searchListProps {
   list: listData | undefined;
   sortTypes: Array<string>;
+  currentQuery: string;
 }
 
-const SearchList: FC<searchListProps> = ({ list, sortTypes }): ReactElement => {
+const SearchList: FC<searchListProps> = ({ list, sortTypes, currentQuery }): ReactElement => {
   const [visibleList, setVisibleList] = useState(list?.results);
+
+  useEffect(() => {
+    setVisibleList(list?.results);
+  }, [list]);
 
   if (!list)
     return (
@@ -47,7 +52,7 @@ const SearchList: FC<searchListProps> = ({ list, sortTypes }): ReactElement => {
     <>
       <SortButtons sortTypes={sortTypes} sortCb={sortCb} />
       {visibleList?.map((element, index) => (
-        <ListElement key={element.id} index={index} data={element} />
+        <ListElement key={element.id} index={index} data={element} currentQuery={currentQuery} />
       ))}
     </>
   );

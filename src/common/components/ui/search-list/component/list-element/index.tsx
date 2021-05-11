@@ -1,6 +1,7 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
+import { songData } from 'common/interfaces';
+import { millisToMinutesAndSeconds } from 'common/utils';
 import {
   ElementContainer,
   BasicDetailsWrapper,
@@ -10,19 +11,14 @@ import {
   MoreDetailsWrapper,
   StyledLink
 } from './styles';
-import { songData } from 'common/interfaces';
-import { millisToMinutesAndSeconds } from 'common/utils';
 
 interface listElementProps {
   index: number;
   data: songData;
+  currentQuery: string;
 }
 
-interface params {
-  searchValue: string | undefined;
-}
-
-export const ListElement: FC<listElementProps> = ({ data, index }): ReactElement => {
+export const ListElement: FC<listElementProps> = ({ data, index, currentQuery }): ReactElement => {
   const {
     title,
     artist,
@@ -35,7 +31,6 @@ export const ListElement: FC<listElementProps> = ({ data, index }): ReactElement
     currency
   } = data;
   const [showDetails, setShowDetails] = useState(false);
-  const { searchValue } = useParams<params>();
 
   const toggleFnc = () => setShowDetails((prevState) => !prevState);
   const Icon = showDetails ? MinusIcon : PlusIcon;
@@ -46,7 +41,7 @@ export const ListElement: FC<listElementProps> = ({ data, index }): ReactElement
     <ElementContainer>
       <BasicDetailsWrapper>
         <div>
-          {title && <StyledLink to={`/preview/${searchValue}/${index}`}>{title}</StyledLink>}
+          {title && <StyledLink to={`/preview/${currentQuery}/${index}`}>{title}</StyledLink>}
           {artist && <p>{artist}</p>}
         </div>
         <Icon onClick={toggleFnc} />

@@ -65,8 +65,7 @@ export const currentSongData = (
 
   return {
     data,
-    nextSongPath: `/${searchValue}/${index}`,
-    hasPrev: index === 0,
-    hasNext: index === totalElements
+    nextSongPath: index === totalElements ? '' : `/preview/${searchValue}/${index + 1}`,
+    prevSongPath: index === 0 ? '' : `/preview/${searchValue}/${index - 1}`
   };
 };

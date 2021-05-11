@@ -21,7 +21,9 @@ export const SearchAndResult: FC<searchAndResultProps> = ({
 }): ReactElement => {
   const [currentValue, setCurrentValue] = useState(paramValue);
 
-  const { isLoading, data } = useQuery([CACHE_KEY, currentValue], () => fetchFn(currentValue));
+  const { isLoading, data } = useQuery([CACHE_KEY, currentValue], () => fetchFn(currentValue), {
+    staleTime: 1000 * 3600 * 24
+  });
 
   const onChangeCb = (value: string) => {
     setCurrentValue(value);
@@ -31,7 +33,11 @@ export const SearchAndResult: FC<searchAndResultProps> = ({
   return (
     <>
       <SearchBar initialValue={paramValue} onChangeCb={onChangeCb} />
-      {isLoading ? <Loading /> : <SearchList list={data} sortTypes={sortTypes} />}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <SearchList list={data} sortTypes={sortTypes} currentQuery={currentValue} />
+      )}
     </>
   );
 };
