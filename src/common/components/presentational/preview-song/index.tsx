@@ -18,11 +18,7 @@ export interface previewSongProps {
   prevSongPath: string;
 }
 
-export const PreviewSong: FC<previewSongProps> = ({
-  data,
-  prevSongPath,
-  nextSongPath
-}): ReactElement => {
+const PreviewSong: FC<previewSongProps> = ({ data, prevSongPath, nextSongPath }): ReactElement => {
   const { thumbnail, title, artist, album_title, song_preview } = data;
 
   return (
@@ -50,3 +46,5 @@ export const PreviewSong: FC<previewSongProps> = ({
     </PreviewContainer>
   );
 };
+
+export default PreviewSong;

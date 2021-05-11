@@ -7,10 +7,12 @@ interface backButtonProps {
   backFn: () => void;
 }
 
-export const BackButton: FC<backButtonProps> = ({ backFn }): ReactElement => {
+const BackButton: FC<backButtonProps> = ({ backFn }): ReactElement => {
   return (
     <Wrapper>
       <BackButtonIcon onClick={backFn} />
     </Wrapper>
   );
 };
+
+export default BackButton;

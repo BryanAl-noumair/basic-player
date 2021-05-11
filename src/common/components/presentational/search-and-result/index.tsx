@@ -6,7 +6,7 @@ import { listData } from 'common/interfaces';
 import { CACHE_KEY } from 'common/constants/text';
 import SearchBar from 'common/components/ui/search-bar';
 import SearchList from 'common/components/ui/search-list';
-import { Loading } from 'common/components/ui/loading';
+import Loading from 'common/components/ui/loading';
 
 interface searchAndResultProps {
   paramValue: string;
@@ -15,10 +15,7 @@ interface searchAndResultProps {
 
 const sortTypes = ['length', 'genre', 'price'];
 
-export const SearchAndResult: FC<searchAndResultProps> = ({
-  paramValue,
-  fetchFn
-}): ReactElement => {
+const SearchAndResult: FC<searchAndResultProps> = ({ paramValue, fetchFn }): ReactElement => {
   const [currentValue, setCurrentValue] = useState(paramValue);
 
   const { isLoading, data } = useQuery([CACHE_KEY, currentValue], () => fetchFn(currentValue), {
@@ -41,3 +38,5 @@ export const SearchAndResult: FC<searchAndResultProps> = ({
     </>
   );
 };
+
+export default SearchAndResult;

@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { SearchAndResult } from 'common/components/presentational/search-and-result';
+import SearchAndResult from 'common/components/presentational/search-and-result';
 import { fetchSong } from 'common/utils';
 
 interface params {
