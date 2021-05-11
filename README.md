@@ -1,6 +1,14 @@
+### `DESCRIPTION`
+
+Basic app that fecth preview songs form itunes based on a search value.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### `DOCKER`
+
+Docker file is provided to create an image 
 
 ## Available Scripts
 
